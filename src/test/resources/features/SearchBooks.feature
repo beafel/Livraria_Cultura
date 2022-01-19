@@ -1,4 +1,4 @@
-Feature: Login and Search for some Book at Livraria Cultura
+Feature: Login and Search for some Books at Livraria Cultura
 
   Scenario: Success Login
     Given I access Livraria Cultura homepage "1"
@@ -11,9 +11,9 @@ Feature: Login and Search for some Book at Livraria Cultura
     Then I check the <title> and the <author> of the book
     And I click on add to cart button
     When I click on cart button
-    Then show the title of the <book> and price <value>
+    Then show the title of the <book> and subtotal <value>
     Examples:
-    | id  |         title          |               book                                   |     author     |    value    |
-    | "2" |       "Dilbert 1"      | "DILBERT 1 – CORRA, O CONTROLE DE QUALIDADE VEM AÍ!" | "SCOTT ADAMS"  | "R$ 19,90"  |
-    | "3" |       "Dilbert 4"      | "DILBERT 4 – TRABALHANDO EM CASA!"                   | "SCOTT ADAMS"  | "R$ 19,90"  |
-    | "4" | "Use A Cabeca! - Java" | "USE A CABEÇA! JAVA"                                 | "KATHY SIERRA" | "R$ 172,00" |
+    | id  |         title                       |               book                                   |     author     |    value    |
+    | "2" |       "Dilbert 1"                   | "DILBERT 1 – CORRA, O CONTROLE DE QUALIDADE VEM AÍ!" | "SCOTT ADAMS"  | "R$ 12,91"  |
+    | "3" |       "Dilbert 4"                   | "DILBERT 4 – TRABALHANDO EM CASA!"                   | "SCOTT ADAMS"  | "R$ 14,14"  |
+    | "4" | "Use A Cabeca! - Java Kathy Sierra" | "USE A CABEÇA!"                                      | "KATHY SIERRA" | "R$ 103,20" |

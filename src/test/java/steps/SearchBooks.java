@@ -1,6 +1,5 @@
 package steps;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
@@ -22,7 +21,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class SearchBooks {
-
+ 
     String url;
     WebDriver driver;
 
@@ -40,11 +39,11 @@ public class SearchBooks {
 
     @Before
     public void setUp(){
-        url = "https://www.livrariacultura.com.br";
-        System.setProperty("webdriver.chrome.driver","drivers/chrome/chromedriver90.exe");
+        url = "https://www3.livrariacultura.com.br";
+        System.setProperty("webdriver.chrome.driver","drivers/chrome/chromedriver96.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(20000, TimeUnit.MILLISECONDS);
+        driver.manage().timeouts().implicitlyWait(10000, TimeUnit.MILLISECONDS);
 
         System.out.println("Preparou o setup");
     }
@@ -59,7 +58,7 @@ public class SearchBooks {
     @Given("^I access Livraria Cultura homepage \"([^\"]*)\"$")
     public void iAccessLivrariaCulturaHomepage(String arg0) throws IOException {
         driver.get(url);
-        driver.findElement(By.id("aviso-cookies-accepted")).click();
+        //driver.findElement(By.id("aviso-cookies-accepted")).click();
 
         System.out.println("Passo 1 - Homepage Livraria Cultura");
         print("Passo 1 - Exibe Site da Livraria Cultura");
@@ -74,7 +73,7 @@ public class SearchBooks {
         driver.findElement(By.cssSelector("div.bg-opacity")).click();
         driver.findElement(By.id("loginWithUserAndPasswordBtn")).click();
         driver.findElement(By.id("inputEmail")).sendKeys("qapratica@gmail.com");
-        driver.findElement(By.id("inputPassword")).sendKeys("1504VinteUm");
+        driver.findElement(By.id("inputPassword")).sendKeys("************");
         driver.findElement(By.id("classicLoginBtn")).sendKeys(Keys.ENTER);
 
         System.out.println("Passo 2 - Processo de Login");
@@ -92,7 +91,7 @@ public class SearchBooks {
     @Given("^I am at Livraria Cultura homepage \"([^\"]*)\"$")
     public void iAmAtLivrariaCulturaHomepage(String arg0) throws IOException {
         driver.get(url);
-        driver.findElement(By.id("aviso-cookies-accepted")).click();
+        //driver.findElement(By.id("aviso-cookies-accepted")).click();
 
         System.out.println("Passo 4 - Livraria Cultura Homepage");
         print("Passo 4 - Livraria Cultura Homepage");
@@ -100,16 +99,15 @@ public class SearchBooks {
 
     @When("^I type the \"([^\"]*)\" of the book and click Return$")
     public void iTypeTheOfTheBookAndClickReturn(String title) throws IOException {
-        driver.findElement(By.xpath("/html[1]/body[1]/div[8]/header[1]/section[1]/div[1]/div[1]/div[3]/div[2]/fieldset[1]/input[2]")).sendKeys(title);
-        driver.findElement(By.xpath("/html[1]/body[1]/div[8]/header[1]/section[1]/div[1]/div[1]/div[3]/div[2]/fieldset[1]/input[2]")).sendKeys(Keys.ENTER);
+        driver.findElement(By.xpath("/html[1]/body[1]/div[7]/header[1]/section[1]/div[1]/div[1]/div[3]/div[2]/fieldset[1]/input[2]")).sendKeys(title);
+        driver.findElement(By.xpath("/html[1]/body[1]/div[7]/header[1]/section[1]/div[1]/div[1]/div[3]/div[2]/fieldset[1]/input[2]")).sendKeys(Keys.ENTER);
 
         System.out.println("Passo 5 - Pesquisa por " + title);
         print("Passo 5 - Pesquisa por " + title);
     }
 
     @Then("^I check the \"([^\"]*)\" and the \"([^\"]*)\" of the book$")
-    public void iCheckTheAndTheOfTheBook(String title, String author) throws IOException, InterruptedException {
-        Thread.sleep(6000);
+    public void iCheckTheAndTheOfTheBook(String title, String author) throws IOException {
         assertEquals(title, driver.findElement(By.cssSelector("strong.value")).getText());
         //assertTrue(driver.findElement(By.xpath("//li[contains(text(),'author')]")).getText().contains(author));
         assertTrue(driver.findElement(By.cssSelector("div.prateleiraProduto__autor__nome")).getText().contains(author));
@@ -135,10 +133,10 @@ public class SearchBooks {
         print("Passo 8 - Clica no Carrinho de Compras");
     }
 
-    @Then("^show the title of the \"([^\"]*)\" and price \"([^\"]*)\"$")
+    @Then("^show the title of the \"([^\"]*)\" and subtotal \"([^\"]*)\"$")
     public void showTheTitleOfTheAndPrice(String book, String value) throws IOException {
         assertEquals(book, driver.findElement(By.cssSelector("p.title-mini")).getText());
-        assertEquals(value,driver.findElement(By.cssSelector("span.valor")).getText());
+        assertEquals(value,driver.findElement(By.cssSelector("#mini-cart-admake-total")).getText());
 
         System.out.println("Passo 9 - Valida " + book + " e " + value + " no carrinho");
         print("Passo 9 - Valida " + book + " e " + value + " no carrinho");
