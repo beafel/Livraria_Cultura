@@ -40,7 +40,7 @@ public class SearchBooks {
     @Before
     public void setUp(){
         url = "https://www3.livrariacultura.com.br";
-        System.setProperty("webdriver.chrome.driver","drivers/chrome/chromedriver96.exe");
+        System.setProperty("webdriver.chrome.driver","drivers/chrome/chromedriver100.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10000, TimeUnit.MILLISECONDS);
