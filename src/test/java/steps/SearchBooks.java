@@ -65,17 +65,16 @@ public class SearchBooks {
     }
 
     @When("^I do successfull login$")
-    public void i_do_successfull_login() throws IOException, InterruptedException {
+    public void i_do_successfull_login() throws IOException {
         //driver.findElement(By.cssSelector("a.close__icon")).click();
         //driver.findElement(By.id("btnCloseStep1")).click();
         //driver.findElement(By.id("classicLoginBtn")).click();
         driver.findElement(By.cssSelector("p.login")).click();
         driver.findElement(By.cssSelector("div.bg-opacity")).click();
         driver.findElement(By.id("loginWithUserAndPasswordBtn")).click();
-        driver.findElement(By.id("inputEmail")).sendKeys("qapratica@gmail.com");
-        driver.findElement(By.id("inputPassword")).sendKeys("h3Iye@2001");
+        driver.findElement(By.id("inputEmail")).sendKeys("qapratica@zxzxzxzxzxz.com.br");
+        driver.findElement(By.id("inputPassword")).sendKeys("********");
         driver.findElement(By.id("classicLoginBtn")).sendKeys(Keys.ENTER);
-        Thread.sleep(2000);
 
         System.out.println("Passo 2 - Processo de Login");
         print("Passo 2 - Processo de Login");
@@ -120,9 +119,8 @@ public class SearchBooks {
     }
 
     @When("^I click on add to cart button$")
-    public void iClickOnAddToCartButton() throws IOException, InterruptedException {
+    public void iClickOnAddToCartButton() throws IOException {
         driver.findElement(By.cssSelector("a.prateleiraProduto__comprar__botaoComprar")).click();
-        Thread.sleep(3000);
 
         System.out.println("Passo 7 - Clica no botao Comprar");
         print("Passo 7 - Clica no botao Comprar");
