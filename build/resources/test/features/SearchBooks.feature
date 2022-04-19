@@ -8,12 +8,11 @@ Feature: Login and Search for some Books at Livraria Cultura
   Scenario Outline: Search for Books with Success
     Given I am at Livraria Cultura homepage <id>
     When I type the <title> of the book and click Return
-    Then I check the <title> and the <author> of the book
-    And I click on add to cart button
-    When I click on cart button
+    Then I check the search title the <title> the <book> and the <author>
+    When I click on add to cart button
     Then show the title of the <book> and subtotal <value>
     Examples:
-    | id  |         title                       |               book                                   |     author     |    value    |
-    | "2" |       "Dilbert 1"                   | "DILBERT 1 – CORRA, O CONTROLE DE QUALIDADE VEM AÍ!" | "SCOTT ADAMS"  | "R$ 12,91"  |
-    | "3" |       "Dilbert 4"                   | "DILBERT 4 – TRABALHANDO EM CASA!"                   | "SCOTT ADAMS"  | "R$ 14,14"  |
-    | "4" | "Use A Cabeca! - Java Kathy Sierra" | "USE A CABEÇA!"                                      | "KATHY SIERRA" | "R$ 103,20" |
+    | id  |         title                       |               book               |     author     |   value    |
+    | "2" |       "Dilbert 5"                   | "DILBERT 5 – ODEIO REUNIÕES!"    | "SCOTT ADAMS"  | "R$ 19,90" |
+    | "3" |       "Dilbert 8"                   | "DILBERT 8 - PAUSA PARA O CAFÉ" | "SCOTT ADAMS"  | "R$ 19,90" |
+    # ESGOTADO | "4" | "HEAD FIRST JAVA - Java Kathy Sierra" | "HEAD FIRST JAVA"                  | "KATHY SIERRA" | "R$ 66,99" |
